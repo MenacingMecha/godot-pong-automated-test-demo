@@ -18,10 +18,12 @@ func _ready():
 func _process(delta):
 	# Move up and down based on input.
 	var input = Input.get_action_strength(_down) - Input.get_action_strength(_up)
+	# Movement is directly tied to input singleton, making this untestable
 	position.y = clamp(position.y + input * MOVE_SPEED * delta, 16, _screen_size_y - 16)
 
 
 func _on_area_entered(area):
 	if area.name == "Ball":
 		# Assign new direction.
+		# Ball logic outside of ball script - directly coupled dependency
 		area.direction = Vector2(_ball_dir, randf() * 2 - 1).normalized()
