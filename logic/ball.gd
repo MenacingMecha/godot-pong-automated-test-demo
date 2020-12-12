@@ -19,7 +19,7 @@ func reset():
 	_speed = DEFAULT_SPEED
 
 
-func bounce(base_h_direction: float):
+func on_paddle_hit(base_h_direction: float):
 	direction = Vector2(base_h_direction, randf() * 2 - 1).normalized()
 
 

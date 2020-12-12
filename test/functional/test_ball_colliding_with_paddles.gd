@@ -18,8 +18,8 @@ func test_ball_bounces_off_left_paddle():
 	add_child(ball)
 	assert_true(ball.direction.x < 0, "ball should be moving left")
 	watch_signals(paddle)
-	yield(yield_to(paddle, "bounce", MAX_YIELD_WAIT_TIME), YIELD)
-	assert_signal_emitted(paddle, "bounce")
+	yield(yield_to(paddle, "paddle_hit", MAX_YIELD_WAIT_TIME), YIELD)
+	assert_signal_emitted(paddle, "paddle_hit")
 	assert_true(ball.direction.x > 0, "ball should be moving right")
 
 
@@ -34,6 +34,6 @@ func test_ball_bounces_off_right_paddle():
 	ball.direction.x = 1
 	assert_true(ball.direction.x > 0, "ball should be moving right")
 	watch_signals(paddle)
-	yield(yield_to(paddle, "bounce", MAX_YIELD_WAIT_TIME), YIELD)
-	assert_signal_emitted(paddle, "bounce")
+	yield(yield_to(paddle, "paddle_hit", MAX_YIELD_WAIT_TIME), YIELD)
+	assert_signal_emitted(paddle, "paddle_hit")
 	assert_true(ball.direction.x < 0, "ball should be moving left")
