@@ -8,6 +8,7 @@ var _down
 
 onready var _screen_size_y = get_viewport_rect().size.y
 
+
 func _ready():
 	var n = name.to_lower()
 	_up = n + "_move_up"
@@ -18,8 +19,14 @@ func _ready():
 func _process(delta):
 	# Move up and down based on input.
 	var input = Input.get_action_strength(_down) - Input.get_action_strength(_up)
-	# Movement is directly tied to input singleton, making this untestable
-	position.y = clamp(position.y + input * MOVE_SPEED * delta, 16, _screen_size_y - 16)
+	move(input, delta)
+
+
+func move(vertical_direction: float, delta: float):
+	# TODO: magic number >:(
+	position.y = clamp(
+		position.y + vertical_direction * MOVE_SPEED * delta, 16, _screen_size_y - 16
+	)
 
 
 func _on_area_entered(area):
