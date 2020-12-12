@@ -21,3 +21,7 @@ func reset():
 
 func bounce(base_h_direction: float):
 	direction = Vector2(base_h_direction, randf() * 2 - 1).normalized()
+
+
+func bounce_wall_ceiling(bounce_direction: int):
+	direction = (direction + Vector2(0, bounce_direction)).normalized()
