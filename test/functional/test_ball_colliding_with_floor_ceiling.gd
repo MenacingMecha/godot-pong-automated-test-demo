@@ -1,7 +1,7 @@
 extends "res://addons/gut/test.gd"
 
 const START_POSITION_TOP := Vector2(20, 80)
-const START_POSITION_BOT := Vector2(20, 110)
+const START_POSITION_BOT := Vector2(20, 95)
 const BALL_DIRECTION_X := 0.8
 const MAX_YIELD_WAIT_TIME := 1
 
