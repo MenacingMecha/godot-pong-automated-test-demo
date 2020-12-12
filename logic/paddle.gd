@@ -31,6 +31,4 @@ func move(vertical_direction: float, delta: float):
 
 func _on_area_entered(area):
 	if area.name == "Ball":
-		# Assign new direction.
-		# Ball logic outside of ball script - directly coupled dependency
-		area.direction = Vector2(_ball_dir, randf() * 2 - 1).normalized()
+		area.bounce(_ball_dir)
