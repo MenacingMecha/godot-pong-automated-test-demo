@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://logic/paddle.gd" type="Script" id=1]
 [ext_resource path="res://paddle.png" type="Texture" id=2]
-[ext_resource path="res://test/gut.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ball.tscn" type="PackedScene" id=4]
 [ext_resource path="res://paddle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://separator.png" type="Texture" id=6]
@@ -71,8 +70,6 @@ shape = SubResource( 3 )
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 320, 200 )
 current = true
-
-[node name="Gut" parent="." instance=ExtResource( 3 )]
 [connection signal="area_entered" from="Right" to="Right" method="_on_area_entered"]
 [connection signal="area_entered" from="RightWall" to="RightWall" method="_on_wall_area_entered"]
 [connection signal="area_entered" from="Floor" to="Floor" method="_on_area_entered"]
