@@ -36,9 +36,12 @@ func test_members_are_reset_on_reset():
 
 func test_ball_direction_changes_on_hitting_paddle():
 	var ball = add_child_autofree(ball_class.new())
-	var bounce_direction_x := 1
-	ball.bounce(bounce_direction_x)
-	assert_eq(ball.direction.x, bounce_direction_x, "ball bounced in the correct direction")
+	var bounce_direction_x_right := 1
+	ball.bounce(bounce_direction_x_right)
+	assert_true(ball.direction.x > 0, "ball should move right after hitting left paddle")
+	var bounce_direction_x_left := -1
+	ball.bounce(bounce_direction_x_left)
+	assert_true(ball.direction.x < 0, "ball should move left after hitting right paddle")
 	# y direction is random so not suited for testing here
 	# could test the y direction seperately for valid input but not worth the effort
 
