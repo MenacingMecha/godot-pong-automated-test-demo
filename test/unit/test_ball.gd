@@ -5,6 +5,7 @@ const SIMULATE_DELTA := 10
 
 var ball_class = load("res://logic/ball.gd")
 
+
 func test_ball_should_move_on_process():
 	var ball = ball_class.new()
 	add_child_autofree(ball)
@@ -14,6 +15,7 @@ func test_ball_should_move_on_process():
 	# this is hard to calculate as ball._speed changes dynamically
 	# var expected_position : Vector2 = (ball.direction * ball.DEFAULT_SPEED * SIMULATE_DELTA) * SIMULATE_TIME
 	# assert_eq(ball.position, expected_position, "ball position should equal expected position")
+
 
 func test_members_are_reset_on_reset():
 	var ball = ball_class.new()
@@ -30,3 +32,12 @@ func test_members_are_reset_on_reset():
 	assert_eq(ball.direction, default_direction, "ball direction should be default after reset")
 	assert_eq(ball.position, default_position, "ball position should be default after reset")
 	assert_eq(ball._speed, ball.DEFAULT_SPEED, "ball position should be default after reset")
+
+
+func ball_direction_changes_on_hitting_paddle():
+	var ball = add_child_autofree(ball_class.new())
+	var bounce_direction_x = 1
+	ball.bounce(bounce_direction_x)
+	assert_eq(ball.direction.x, bounce_direction_x, "ball bounced in the correct direction")
+	# y direction is random so not suited for testing here
+	# could test the y direction seperately for valid input but not worth the effort
