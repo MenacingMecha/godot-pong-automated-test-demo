@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://logic/paddle.gd" type="Script" id=1]
 [ext_resource path="res://paddle.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://logic/wall.gd" type="Script" id=7]
 [ext_resource path="res://logic/ceiling_floor.gd" type="Script" id=8]
 [ext_resource path="res://floor_ceiling.tscn" type="PackedScene" id=9]
+[ext_resource path="res://wall.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 16 )
@@ -48,12 +49,7 @@ shape = SubResource( 1 )
 position = Vector2( 320, 200 )
 texture = ExtResource( 6 )
 
-[node name="LeftWall" type="Area2D" parent="."]
-position = Vector2( -10, 200 )
-script = ExtResource( 7 )
-
-[node name="Collision" type="CollisionShape2D" parent="LeftWall"]
-shape = SubResource( 2 )
+[node name="LeftWall" parent="." instance=ExtResource( 10 )]
 
 [node name="RightWall" type="Area2D" parent="."]
 position = Vector2( 650, 200 )
@@ -78,6 +74,5 @@ current = true
 
 [node name="Gut" parent="." instance=ExtResource( 3 )]
 [connection signal="area_entered" from="Right" to="Right" method="_on_area_entered"]
-[connection signal="area_entered" from="LeftWall" to="LeftWall" method="_on_wall_area_entered"]
 [connection signal="area_entered" from="RightWall" to="RightWall" method="_on_wall_area_entered"]
 [connection signal="area_entered" from="Floor" to="Floor" method="_on_area_entered"]
