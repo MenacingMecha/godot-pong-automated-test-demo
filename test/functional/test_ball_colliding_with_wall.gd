@@ -7,6 +7,7 @@ const MAX_YIELD_WAIT_TIME := 1
 var ball_packedscene = load("res://ball.tscn")
 var wall_packedscene = load("res://wall.tscn")
 
+
 func test_ball_resets_on_hitting_wall():
 	var wall = autofree(wall_packedscene.instance())
 	wall.position = START_POSITION_LEFT

@@ -49,10 +49,10 @@ func test_ball_direction_changes_on_hitting_paddle():
 func test_ball_direction_changes_on_hitting_ceiling_floor():
 	var ball = add_child_autofree(ball_class.new())
 	var ceiling_bounce_direction := 1
-	ball.bounce_wall_ceiling(ceiling_bounce_direction)
+	ball.on_side_hit(ceiling_bounce_direction)
 	assert_true(
 		ball.direction.y > 0, "after bouncing off the ceiling, the ball should be moving down"
 	)
 	var floor_bounce_direction := -1
-	ball.bounce_wall_ceiling(floor_bounce_direction)
+	ball.on_side_hit(floor_bounce_direction)
 	assert_true(ball.direction.y < 0, "after bouncing off the floor, the ball should be moving up")

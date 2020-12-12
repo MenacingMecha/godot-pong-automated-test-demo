@@ -23,6 +23,6 @@ func on_paddle_hit(base_h_direction: float):
 	direction = Vector2(base_h_direction, randf() * 2 - 1).normalized()
 
 
-func bounce_wall_ceiling(bounce_direction: int):
+func on_side_hit(bounce_direction: int):
 	# hard to test exact value as it adds the direction to itself rather than setting directly
 	direction = (direction + Vector2(0, bounce_direction)).normalized()
