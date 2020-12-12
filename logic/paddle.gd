@@ -1,5 +1,6 @@
 extends Area2D
 
+signal bounce
 const MOVE_SPEED = 100
 
 var _ball_dir
@@ -31,4 +32,5 @@ func move(vertical_direction: float, delta: float):
 
 func _on_area_entered(area):
 	if area.name == "Ball":
+		emit_signal("bounce")
 		area.bounce(_ball_dir)

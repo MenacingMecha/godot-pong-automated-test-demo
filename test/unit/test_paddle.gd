@@ -4,6 +4,7 @@ const DELTA := 2
 const DEFAULT_PADDLE_POSITION := Vector2(50, 50)
 
 var paddle_class = load("res://logic/paddle.gd")
+var ball_class = load("res://logic/ball.gd")
 
 
 func test_p1_paddle_inputactions_are_correctly_assigned_on_ready():
@@ -51,3 +52,18 @@ func test_paddle_move_up():
 		paddle.position.y < DEFAULT_PADDLE_POSITION.y,
 		"paddles position should be higher after moving up"
 	)
+
+
+func test_paddle_bounces_ball():
+	var paddle = paddle_class.new()
+	watch_signals(paddle)
+	add_child_autofree(paddle)
+	var mock_area = autofree(Area2D.new())
+	mock_area.name = "not ball"
+	paddle._on_area_entered(mock_area)
+	assert_signal_not_emitted(paddle, "bounce", "areas that aren't balls shouldn't bounce")
+	var mock_ball = autofree(ball_class.new())
+	# balls need to explicitly be named "Ball" to work
+	mock_ball.name = "Ball"
+	paddle._on_area_entered(mock_ball)
+	assert_signal_emitted(paddle, "bounce", "balls should bounce when overlapping paddle")
