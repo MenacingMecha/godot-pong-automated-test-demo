@@ -34,10 +34,22 @@ func test_members_are_reset_on_reset():
 	assert_eq(ball._speed, ball.DEFAULT_SPEED, "ball position should be default after reset")
 
 
-func ball_direction_changes_on_hitting_paddle():
+func test_ball_direction_changes_on_hitting_paddle():
 	var ball = add_child_autofree(ball_class.new())
-	var bounce_direction_x = 1
+	var bounce_direction_x := 1
 	ball.bounce(bounce_direction_x)
 	assert_eq(ball.direction.x, bounce_direction_x, "ball bounced in the correct direction")
 	# y direction is random so not suited for testing here
 	# could test the y direction seperately for valid input but not worth the effort
+
+
+func test_ball_direction_changes_on_hitting_ceiling_floor():
+	var ball = add_child_autofree(ball_class.new())
+	var ceiling_bounce_direction := 1
+	ball.bounce_wall_ceiling(ceiling_bounce_direction)
+	assert_true(
+		ball.direction.y > 0, "after bouncing off the ceiling, the ball should be moving down"
+	)
+	var floor_bounce_direction := -1
+	ball.bounce_wall_ceiling(floor_bounce_direction)
+	assert_true(ball.direction.y < 0, "after bouncing off the floor, the ball should be moving up")
