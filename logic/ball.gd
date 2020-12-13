@@ -1,5 +1,7 @@
 extends Area2D
 
+signal reset
+
 const DEFAULT_SPEED = 100
 
 var direction = Vector2.LEFT
@@ -14,6 +16,7 @@ func _process(delta):
 
 
 func reset():
+	emit_signal("reset")
 	direction = Vector2.LEFT
 	position = _initial_pos
 	_speed = DEFAULT_SPEED

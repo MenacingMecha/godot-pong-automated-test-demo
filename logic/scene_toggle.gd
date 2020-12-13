@@ -5,6 +5,7 @@ var test_runner_scene_path = "res://test/gut.tscn"
 
 
 func _input(_event):
+	# I don't think it's possible to test these
 	if Input.is_action_just_pressed("kb_1"):
 		get_tree().change_scene(pong_scene_path)
 	if Input.is_action_just_pressed("kb_2"):

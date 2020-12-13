@@ -17,6 +17,9 @@ func test_ball_resets_on_hitting_wall():
 	add_child(ball)
 	assert_true(ball.direction.x < 0, "ball should be moving left")
 	watch_signals(wall)
+	watch_signals(ball)
 	yield(yield_to(wall, "reset_ball", MAX_YIELD_WAIT_TIME), YIELD)
 	assert_signal_emitted(wall, "reset_ball")
-	assert_eq(ball.position, ball._initial_pos, "ball position should be reset")
+	# use a double and check "assert_method_called" instead
+	# assert_almost_eq(ball.position, ball._initial_pos, Vector2(4, 4), "ball position should be reset")
+	assert_signal_emitted(ball, "reset")
