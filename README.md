@@ -6,6 +6,15 @@ Very basic GUT functionality used just to show feasibility - could easily be imp
 
 Originally based on the [official Pong with GDScript Demo](https://godotengine.org/asset-library/asset/121)
 
+## Controls
+
+- 1: Switch to game scene
+- 2: Switch to test runner
+- W: P1 Up
+- S: P1 Down
+- Up: P2 Up
+- Down: P2 Down
+
 ## Screenshots
 ![Screenshot](screenshots/gut-output.png)
 
