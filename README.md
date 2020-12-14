@@ -16,6 +16,8 @@ Originally based on the [official Pong with GDScript Demo](https://godotengine.o
 - Down: P2 Down
 
 ## Screenshots
+[View preview vid](https://youtu.be/zEXdRJyfuVg)
+
 ![Screenshot](screenshots/gut-output.png)
 
 ![Screenshot](screenshots/pong.png)
